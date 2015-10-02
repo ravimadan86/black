@@ -1,0 +1,58 @@
+define(['angular'], function (angular) {
+ 'use strict';
+ return ['$http','Constants',function($http,Constants){
+ 	
+ 	var jsonConfig = { 
+        headers:{
+                    'Content-Type':'application/json'
+                }
+    };
+
+    //Get latest channel lineups
+    this.getLatestClu = function(payLoadData){
+        var searchParam = "";
+        if(payLoadData.name)
+            searchParam+='&name='+payLoadData.name;
+        if(payLoadData.regionName)
+            searchParam+='&regionName='+payLoadData.regionName;
+        if(payLoadData.siteName)
+            searchParam+='&siteName='+payLoadData.siteName;
+        if(payLoadData.statusId)
+            searchParam+='&statusId='+payLoadData.statusId;
+        if(payLoadData.effectiveDate)
+            searchParam+='&effectiveDate='+payLoadData.effectiveDate;
+
+    	return $http.get(Constants.baseUrl+'/home/action/clu/list?page='+payLoadData.page+'&pageSize='+payLoadData.pageSize+'&sort=createDate,desc'+searchParam);
+    };
+
+    //get all regions with siteid
+    this.getRegionsWithSiteid = function(){
+        return $http.get(Constants.baseUrl+'/lineup/clu/region');
+    };
+
+    //Get data to create new channel line up
+    this.getCreateCluDetails = function(){
+        return $http.get(Constants.baseUrl+'/lineup/action/headers/details');
+    };
+
+    //Save new channel line up
+    this.saveNewChannelLineUp = function(payLoadData){
+        return $http.post(Constants.baseUrl+'/lineup/action/clu/save',payLoadData,jsonConfig);
+    };
+
+    //Get data to edit channel line up
+    this.getEditCluDetails = function(payLoadData){
+        return $http.get(Constants.baseUrl+'/lineup/action/clu/details/'+payLoadData);
+    };
+
+    //save edited channel line up details
+    this.saveEditedCluDetails = function(payLoadData){
+        return $http.post(Constants.baseUrl+'/lineup/action/clu/update',payLoadData,jsonConfig);
+    };
+
+    
+    this.getDisclaimerList = function(payLoadData){
+        return $http.get(Constants.baseUrl+'/lineup/clu/disclaimers');
+    }
+ }];
+});

@@ -1,0 +1,20 @@
+define(['angular'], function (angular) {
+	'use strict';
+	return ['$http','Constants',function($http,Constants){
+
+		var jsonConfig = { 
+			headers:{
+				'Content-Type':'application/json'
+			}
+		};
+      //Get tactics details
+      this.getTacticDetails = function(payLoadData){
+        return $http.get(Constants.baseUrl + '/tactic/list/tactic?page=' + payLoadData.page + '&pageSize=' + payLoadData.pageSize + '&name=' + payLoadData.name + '&effectiveDate=' + payLoadData.effectiveDate + '&modifiedDate=' + payLoadData.modifiedDate + '&types=' + payLoadData.types + '&statuses=' + payLoadData.statusType + '&sort=name,asc');
+      };
+
+      //Get tactics details
+      this.getCategoriesDetails = function(payLoadData){
+        return $http.get(Constants.baseUrl + '/tactic/list/category?page=' + payLoadData.page + '&pageSize=' + payLoadData.pageSize + '&sort=name,asc');
+      };
+	}];
+});

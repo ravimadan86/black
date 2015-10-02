@@ -1,0 +1,48 @@
+define(['angular'], function (angular) {
+	'use strict';
+	return ['$http','Constants',function($http,Constants){
+
+		var jsonConfig = { 
+			headers:{
+				'Content-Type':'application/json'
+			}
+		};
+
+
+		//Get all users list
+    	this.getUsers = function(payLoadData){
+    	return $http.get(Constants.baseUrl + '/admin/action/users/list' + '?page=' + payLoadData.page + '&pageSize=' + payLoadData.pageSize + '&sort='+ payLoadData.sort + '&name=' +payLoadData.name + '&email=' + payLoadData.emailId + '&status=' + payLoadData.statusId + '&roles=' + payLoadData.roleId);
+   		 };
+
+   		//Get user details
+    	this.getUserDetails = function(emailId){
+    	return $http.get(Constants.baseUrl + '/admin/action/user/request/details' + '?emailId=' + emailId);
+   		 };
+
+   		 //Change users status to active
+    	this.changeUserStatusToActive = function(usersEmailIds){
+    	return $http.post(Constants.baseUrl + '/admin/action/user/change/status/active' + '?emailIds=' + usersEmailIds);
+   		 };
+
+   		//Change users status to inactive
+    	this.changeUserStatusToInactive = function(usersEmailIds){
+    	return $http.post(Constants.baseUrl + '/admin/action/user/change/status/inactive' + '?emailIds=' + usersEmailIds);
+   		 };
+
+       //Save edit user details.
+   		this.editUser = function(payLoadData){
+      return $http.post(Constants.baseUrl + '/admin/action/edit/user',payLoadData,jsonConfig);
+       };
+
+       //Save new used details.
+      this.createUser = function(payLoadData){
+      return $http.post(Constants.baseUrl + '/admin/action/create/user',payLoadData,jsonConfig);
+       };
+   		
+      this.getBundles = function(payLoadData)
+      {
+        return $http.get(Constants.baseUrl + '/admin/prod/action/bundle/upload/list' + '?page=' + payLoadData.page + '&pageSize=' + payLoadData.pageSize + '&sort=' + payLoadData.sort + '&email=' + payLoadData.email + '&fileName='+ payLoadData.filename + '&size=' + payLoadData.size + '&scheduleDate=' + payLoadData.scheduleDate + '&scheduleTypes=' + payLoadData.scheduleType + '&status=' + payLoadData.status + '&ftp=' + payLoadData.ftpcred);
+      };
+   		
+	}];
+});

@@ -1,0 +1,40 @@
+10
+
+dir
+157718
+svn+ssh://svn.naehas.com/home/svn/repository/stores/naehasstore/trunk/angular/app/scripts/modules/management
+svn+ssh://svn.naehas.com/home/svn/repository
+
+
+
+2015-05-08T11:26:21.063563Z
+156735
+arpita
+
+
+svn:special svn:externals svn:needs-lock
+
+
+
+
+
+
+
+
+
+
+
+3e86644e-8524-0410-b64b-e7b6ac602746
+
+labelManagement
+dir
+
+productionManagement
+dir
+
+tacticManagement
+dir
+
+userManagement
+dir
+

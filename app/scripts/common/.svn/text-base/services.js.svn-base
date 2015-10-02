@@ -1,0 +1,24 @@
+'use strict';
+
+define(['angular','./services/constants','./services/utils','./services/userServices','./services/modalService','./services/commonStoreServices','./services/commonModalService','./services/userManagementServices','./services/productionManagementServices','./services/tacticManagementServices','./services/projectServices'], function (angular,constants,utils,userServices,modalService,commonStoreServices,commonModalService,userManagementServices,productionManagementServices,tacticManagementServices,projectServices) {
+
+	/* Services */
+	var module = angular.module('services',[]);
+
+	module.value('Constants',constants);
+	module.factory('UTILS',utils);
+	module.service('USER',userServices);
+	module.service('MODAL',modalService);
+	module.service('COMMONSTORE',commonStoreServices);
+	module.service('COMMONMODAL',commonModalService);
+	module.service('USERMANAGEMENT',userManagementServices);
+	module.service('PRODMANAGEMENT',productionManagementServices);
+	module.service('TACTICMANAGEMENT',tacticManagementServices);
+	module.service('PROJECTS',projectServices);
+	/*module.service('CLU',channelLineUpServices);
+	module.service('RATECARD',rateCardServices);
+	module.service('CommonWelcomekitServices',commonWelcomekitServices);
+	module.service('CommonModalService',commonModalService);*/
+
+	return module;
+});

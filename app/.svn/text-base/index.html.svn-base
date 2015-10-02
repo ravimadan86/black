@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>Naehasstore</title>
+	<link rel="stylesheet" href="css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="css/font-awesome.css"/>    
+    <link rel="stylesheet" href="css/font-segoeui.css"/>
+    <link rel="stylesheet" href="css/select.css">
+    <link rel="stylesheet" href="css/select2.css">
+    <link rel="stylesheet" href="css/bootstrap-tokenfield.css">
+    <link rel="stylesheet" href="css/jquery-datetimepicker.css">
+    <link rel="stylesheet" href="css/cox-customization.css"/>
+    <link rel="stylesheet" href="css/cox-style.css"/>
+    <link rel="stylesheet" href="css/cox-header.css"/>
+    <link rel="stylesheet" href="css/main.css"/>
+    <link rel="stylesheet" href="css/responsive-custom.css"/>
+    <link rel="stylesheet" href="bower_components/angular-ui-select/dist/select.css"/>
+    <link rel="stylesheet" href="bower_components/ng-tags-input/ng-tags-input.css"/>
+    <link rel="stylesheet" href="css/blueimp-gallery.css"/>
+    <!-- CSS to style the file input field as button and adjust the Bootstrap progress bars -->
+    <link rel="stylesheet" href="css/jquery.fileupload.css">
+    <link rel="stylesheet" href="css/jquery.fileupload-ui.css">
+    <link rel="icon" href="favicon.ico">
+    <link rel="icon" type="image/png" href="favicon-32x32.png" sizes="32x32" />
+    <link rel="icon" type="image/png" href="favicon-16x16.png" sizes="16x16" />
+</head>
+<body ng-cloak>
+
+	<div role="main">
+	     <div ng-view></div>      
+  	</div>  
+    <!--Default loader for whole application.-->
+    <div  ng-show="isLoaderShowing">
+        <div class="loaderWrapper"></div>
+        <div class="loaderContent"><img src="img/loader.gif" align="middle"/> <span>Please Wait...</span></div>
+    </div>
+
+	<script data-main="scripts/main" src="bower_components/requirejs/require.js"></script>
+</body>
+</html>

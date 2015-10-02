@@ -1,0 +1,29 @@
+'use strict';
+
+define(['angular'], function (angular) {
+	
+	return {
+		version : '1.0',
+		//baseUrl: 'http://192.168.201.121:7070/welcomekitstoreweb/services',
+		//baseUrl: 'https://qa.naehas.com/CoxKitsQAStore/welcomekitstoreweb/services',
+		baseUrl : '${BASE_URL}',
+		success : 'SUCCESS',
+		failure : 'FAILURE',
+		sucessAlert : 'success',
+		errorAlert : 'danger',
+		successHeading : 'Success',
+		errorHeading : 'Error',
+		loginUrlHtmlMessage : '.Please <a href="#/login">Click here</a> to go to the login page.',
+		isPasswordSame : 'Passwords are not same!Please correct them.',
+		changePasswordSucess : 'Password changed sucessfully.',
+		forgotPassReqSubmit : 'Request submitted sucessfully.',
+		emailsNotSame : 'Emails are not same!',
+		requestSubmitted : 'User request to access coxstore is submitted sucessfully.',
+		confirmationModalBodyTextForProof : 'Changes has been made, do you want to proof with changes?',
+		orderPageHtmlMessage : '<a href="#/orders">Click here</a>',
+		releaseNumber: 'Version ${BUILD_NO}',
+		releaseDate: '${BUILD_DATE}',
+		adminUser: 'Admin',
+		confirmationModalBodyTextForRegionChange: 'All the unsaved changes will be reverted. Are you sure?'
+	};
+});

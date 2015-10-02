@@ -1,0 +1,303 @@
+'use strict';
+
+define(['angular','common/header/headerDirective','common/footer/footerDirective','modules/admin/project/projectDirective'], function (angular,headerDirective,footerDirective,adminProjectDirective) {
+
+	/* Directives */
+	var module = angular.module('directives',[]);
+
+	module.directive('appHeader',headerDirective);
+	module.directive('appFooter',footerDirective);
+	module.directive('adminProject',adminProjectDirective);
+
+	module.directive('showErrors', function() {
+	    return {
+	      restrict: 'A',
+	      require:  '^form',
+	      link: function (scope, el, attrs, formCtrl) {
+	        // find the text box element, which has the 'name' attribute
+	        var inputEl   = el[0].querySelector("[name]");
+	        // convert the native text box element to an angular element
+	        var inputNgEl = angular.element(inputEl);
+	        // get the name on the text box so we know the property to check
+	        // on the form controller
+	        var inputName = inputNgEl.attr('name');
+
+	        // only apply the has-error class after the user leaves the text box
+	        inputNgEl.bind('blur', function() {
+	          el.toggleClass('has-error', formCtrl[inputName].$invalid);
+	        })
+	      }
+	    }
+	});
+
+	module.directive("popoverHtmlUnsafePopup", function () {
+      return {
+        restrict: "EA",
+        replace: true,
+        scope: { title: "@", content: "@", placement: "@", animation: "&", isOpen: "&", theme: "@"},
+        template: '<div class="popover {{placement}} {{theme}}" ng-class="{ in: isOpen(), fade: animation() }"><div class="arrow"></div><div class="popover-inner"><h3 class="popover-title" ng-bind="title" ng-show="title"></h3><div class="popover-content" bind-html-unsafe="content"></div></div></div>'
+      };
+    })
+
+    module.directive("popoverHtmlUnsafe", [ "$tooltip", function ($tooltip) {
+      return $tooltip("popoverHtmlUnsafe", "popover", "mouseenter");
+    }]);
+
+	module.directive("popoverHtmlUnsafeLogoutPopup", function () {
+      return {
+        restrict: "EA",
+        replace: true,
+        scope: { title: "@", content: "@", placement: "@", animation: "&", isOpen: "&", theme: "@"},
+        template: '<div ng-click="logout()" class="popover {{placement}} {{theme}}" ng-class="{ in: isOpen(), fade: animation() }"><div class="arrow"></div><div class="popover-inner"><h3 class="popover-title" ng-bind="title" ng-show="title"></h3><div class="popover-content" bind-html-unsafe="content"></div></div></div>',
+        
+        controller:['$scope', '$element', '$attrs', '$location', function($scope, $element, $attrs, $location){
+			$scope.logout = function(){
+				$scope.$parent.$parent.logout();
+			};
+		}]
+      };
+    })
+
+    module.directive("popoverHtmlUnsafeLogout", [ "$tooltip", function ($tooltip) {
+      return $tooltip("popoverHtmlUnsafeLogout", "popover", "mouseenter");
+    }]);
+	
+	module.directive('isScrolledOld', ['$window', '$document', function($window, $document) {
+    return {
+
+        link: function($scope, elem, attr) {
+                var $myWindow = angular.element($window);
+                var $myDoc = document;
+                elem.bind('scroll',function(){
+                	$scope.$apply(attr.isScrolled);
+                });
+            }
+	    }
+	}]);
+
+	module.directive('isScrolled', ['$window', '$document', function($window, $document) {
+    return {
+
+        link: function($scope, elem, attr) {
+                var $myWindow = angular.element($window);
+                var $myDoc = document;
+                elem.bind('scroll',function(){
+                	if($(this).scrollTop() + $(this).innerHeight() >= this.scrollHeight) {
+			            // alert('end reached');
+			            $scope.$apply(attr.isScrolled);
+			        }
+                	
+                });
+            }
+		}
+	}]);
+
+	module.directive('dropdownMenuhover', function () {
+	    return {
+	    	link: function (scope, elem) {
+		       $(elem).dropdownHover();
+		    }
+	    };  
+	});
+
+	module.directive('tableScrolled', function() {
+	    return {
+    		restrict: 'A',
+       		link: function($scope, elem, attr) {
+	            elem.bind('scroll', function() {
+	                $(elem).siblings('.table-header').css({ 'left': -$(elem).scrollLeft()});
+	            });
+        	}
+	    }
+	});
+	 
+
+	module.directive('windowResize', ['$window', '$document', function($window, $document) {
+	    return {
+        link: function($scope, elem, attr) {
+        	var $myWindow = angular.element(window);
+            $myWindow.bind('resize', function() {
+
+            });
+        }
+	    }
+	}]);
+
+	module.directive('documentReady',function() {
+	    return {
+	    	restrict: 'A',
+	        link: function($scope, elem, attr) {
+	        	// angular.element(document).ready(function () {
+			    	// elem.find('.table-body').height(elem.find(".inner-wrapper").height() - elem.find(".table-header").height());
+
+			    // });
+	        }
+	    }
+	});
+
+	module.directive('textEllipsis',function() {
+	    return {
+	    	restrict: 'A',
+	        link: function($scope, elem, attr) {
+	        	 $scope.$watch('$last',function(){
+			      $(elem).each(function(i){
+				      var len=$(this).text().length;
+				      var string=$(this).text();
+				      if(string.indexOf(' ') === -1 && len>36){
+				      	console.log('reached');
+					    $(this).text($(this).text().substr(0,15)+'...');
+					  }
+			 	 });  
+			    });
+	        }
+	    }
+	});
+
+	module.directive('digitsWithHyphen', function () {
+		return {
+		  require: 'ngModel',
+		  restrict: 'A',
+		  link: function (scope, element, attr, ctrl) {
+		    function inputValue(val) {
+		      if (val) {
+		        var digits = val.replace(/[^0-9-]/g, '');
+
+		        if (digits !== val) {
+		          ctrl.$setViewValue(digits);
+		          ctrl.$render();
+		        }
+		        //return parseFloat(digits);
+		        return digits;
+
+		      }
+		      return undefined;
+		    }            
+		    ctrl.$parsers.push(inputValue);
+		  }
+		}
+	});
+
+	//Accepts only numbers in input fields.
+	module.directive('numbersOnly', function () {
+		return {
+		  require: 'ngModel',
+		  restrict: 'A',
+		  link: function (scope, element, attr, ctrl) {
+		    function inputValue(val) {
+		      if (val) {
+		        var digits = val.replace(/[^0-9]/g, '');
+
+		        if (digits !== val) {
+		          ctrl.$setViewValue(digits);
+		          ctrl.$render();
+		        }
+		        //return parseFloat(digits);
+		        return digits;
+
+		      }
+		      return undefined;
+		    }            
+		    ctrl.$parsers.push(inputValue);
+		  }
+		}
+	});
+
+	module.directive('validateEmail', [function () {
+	    return {
+	      require: 'ngModel',
+	      link: function (scope, elem, attrs, ctrl) {
+	        var firstEmail = '#' + attrs.validateEmail;
+	        $(elem).add(firstEmail).on('blur', function () {
+	          scope.$apply(function () {
+	          	if(elem.val() == "" || $(firstEmail).val() == "")
+	          	{
+	          		ctrl.$setValidity('emailmatch', true);
+	          	}
+	          	else
+	          	{
+	          		var v = elem.val()===$(firstEmail).val();
+	            	ctrl.$setValidity('emailmatch', v);
+	          	}	
+	            
+	          });
+	        });
+	      }
+	    }
+ 	}]);
+
+	module.directive('onlyCurrency', function () {
+		return {
+		  require: 'ngModel',
+		  restrict: 'A',
+		  link: function (scope, element, attr, ctrl) {
+		    function inputValue(val) {
+		      if (val) {
+		        var digits = val.replace(/[^0-9.]/g, '');
+
+		        if (digits !== val) {
+		          ctrl.$setViewValue(digits);
+		          ctrl.$render();
+		        }
+		        //return parseFloat(digits);
+		        return digits;
+
+		      }
+		      return undefined;
+		    }            
+		    ctrl.$parsers.push(inputValue);
+		  }
+		}
+	});
+
+	module.directive('showtab',
+	    function () {
+	        return {
+	            link: function (scope, element, attrs) {
+	                element.click(function(e) {
+	                    e.preventDefault();
+	                    $(element).tab('show');
+	                });
+	            }
+	        };
+	    });
+
+	module.directive('renderElement',function($compile){
+		return{
+			restrict : 'E',
+			scope : {
+				customization:'='
+			},
+			template: function(element, attrs){
+			},
+			link: function(scope, element, attrs, ngModel){
+				var template = '';
+			 	switch(scope.customization.dataType){
+					case 'TEXT' : template = '<div class="col-sm-6 form-group marginBottom5">' + 
+												'<label for="" class="col-xs-12 col-sm-4 control-label" ng-bind="::customization.displayLabel"></label>' +
+												'<div class="col-xs-12 col-sm-8">' +
+													'<input type="text" class="form-control" ng-required="customization.required"' +
+													'placeholder="{{customization.defaultValue}}" ng-model="customization.dataValue">' + 
+												'</div>' +
+											    '<div class="clearfix"></div>' +
+											 '</div>';
+					break;
+
+					case 'DROPDOWNLIST' : template = '<div class="col-sm-6 form-group marginBottom5">' + 
+												'<label for="" class="col-xs-12 col-sm-4 control-label" ng-bind="::customization.displayLabel"></label>' +
+												'<div class="col-xs-12 col-sm-8">' + '<select class="form-control" ng-required="customization.required" ng-model="customization.dataValue"' +
+													 'ng-options="value as value.valueText for value in customization.customizationValues">' + 
+													 '<option value="" ng-bind="::customization.defaultValue"></option>' +
+													 '</select>' + 
+												'</div>' +
+											    '<div class="clearfix"></div>' +
+											 '</div>';
+					break;
+				}
+				template = $compile(template)(scope);
+				element.replaceWith(template);
+			}
+		}
+	});
+
+	return module;
+});

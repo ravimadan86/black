@@ -1,0 +1,10 @@
+<!-- Application header -->
+	<div app-header></div>
+
+<!-- container -->
+<div class="container for-header-footer">
+<div> This page is under construction</div>
+</div>
+
+<!-- Application footer -->
+	<div app-footer></div>

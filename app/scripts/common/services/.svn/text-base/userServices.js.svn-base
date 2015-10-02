@@ -1,0 +1,73 @@
+define(['angular'], function (angular) {
+ 'use strict';
+ return ['$http','Constants','$q','$timeout',function($http,Constants,$q,$timeout){
+ 	
+ 	var jsonConfig = { 
+        headers:{
+                    'Content-Type':'application/json'
+                }
+    };
+
+    this.reload = function(){
+        var deferred = $q.defer();
+        var resp = {};
+        if(sessionStorage.token){
+            $timeout(function(){
+                deferred.resolve(resp);
+            }, 0, false);
+        } else{
+            $timeout(function(){
+                deferred.reject(resp);
+            }, 0, false);
+        }
+        // deferred.resolve(resp);
+        return deferred.promise;
+    };
+
+    //Get all regions
+    this.getRegions = function(){
+    	return $http.get(Constants.baseUrl+'/user/request/region');
+    };
+
+      //Get default user region
+    this.getDefaultRegion = function(payLoadData){
+        return $http.get(Constants.baseUrl+'/user/request/userregion/'+payLoadData+'/');
+    };
+    
+    //Get all relationtypes from cox communications
+    this.getRelationTypes = function(){
+    	return $http.get(Constants.baseUrl+'/user/request/relationtype');
+    };
+    
+    //Get all primary reasons for requesting access to the cox store application
+    this.getRequestTypes = function(){
+    	return $http.get(Constants.baseUrl+'/user/request/requesttype');
+    };
+
+    //Get all states list
+    this.getStates = function(){
+    	return $http.get(Constants.baseUrl+'/user/request/states');
+    };
+
+    //submit user request access to cox store
+    this.saveUserRequet = function(payLoadData){
+        return $http.post(Constants.baseUrl+'/user/action/request',payLoadData,jsonConfig);
+    };
+
+    this.userLogin = function(payLoadData){
+        return $http.post(Constants.baseUrl+'/auth/login?username='+payLoadData.username+'&password='+payLoadData.password,jsonConfig);
+    }
+
+    this.userForgotPassword = function(payLoadData){
+        return $http.post(Constants.baseUrl+'/user/action/forgotpassword/' + payLoadData + '/');
+    }
+
+    this.submitResetPassword = function(payLoadData){
+        return $http.post(Constants.baseUrl+'/user/action/change/password/',payLoadData,jsonConfig);
+    }
+
+    this.validateResetPassLink = function(payLoadData){
+        return $http.post(Constants.baseUrl+'/auth/validatelink/'+payLoadData+'/');
+    }
+ }];
+});

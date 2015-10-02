@@ -1,0 +1,51 @@
+define(['angular'], function (angular) {
+ 'use strict';
+ return ['$http','Constants',function($http,Constants){
+ 	
+ 	var jsonConfig = { 
+        headers:{
+                    'Content-Type':'application/json'
+                }
+    };
+
+    //Get all categories list
+    this.getCategoryList = function(){
+    	return $http.get('/categories');	
+    };
+
+    //Get project customization configuration
+    this.getProjectConfiguration = function(){
+    	return $http.get('/projectconfigurations');	
+    };
+
+    //Get all categories
+    this.getAllCategories = function(){
+        return $http.get(Constants.baseUrl + '/project/categories'); 
+    };
+
+    //Add a new category
+    this.addCategory = function(payLoadData){
+        return $http.post(Constants.baseUrl + '/project/' + payLoadData.projectId +'/category',payLoadData.categoryDTO,jsonConfig); 
+    };
+
+    //Add a new/existing label to a category
+    this.addLabel = function(payLoadData){
+        return $http.post(Constants.baseUrl + '/project/' + payLoadData.projectId + '/category/' + payLoadData.categoryId + '/label',payLoadData.labelDTO,jsonConfig); 
+    };
+
+    //Remove a new/existing label from a category
+    this.removeLabel = function(payLoadData){
+        return $http.delete(Constants.baseUrl + '/project/' + payLoadData.projectId + '/category/' + payLoadData.categoryId + '/label/' + payLoadData.labelId); 
+    };
+
+    //Remove a new/existing label from a category
+    this.updateProjectDetails = function(payLoadData){
+        return $http.post(Constants.baseUrl + '/project/' + payLoadData.id,payLoadData,jsonConfig); 
+    };
+
+    //get project details
+    this.getProjectDetails = function(projectId){
+        return $http.get(Constants.baseUrl + '/project/' + projectId,jsonConfig); 
+    };
+ }];
+});

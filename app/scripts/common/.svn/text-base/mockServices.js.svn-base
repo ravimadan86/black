@@ -1,0 +1,557 @@
+'use strict';
+
+define(['angular'], function (angular) {
+
+	return function($httpBackend) {
+
+      var projectTypeList = [
+      {
+       "id" : 1,
+       "name" : "Project",
+       "description" : "Start a marketing Project",
+       "imageUrl" : "img/staticTactic.png"
+      },
+      {
+       "id" : 2,
+       "name" : "Custom Project",
+       "description" : "A marketing project that can be customized.",
+       "imageUrl" : "img/customizedTactic.png"
+      },
+      {
+       "id" : 3,
+       "name" : "Channel Lineup",
+       "description" : "Start a Channel Lineup",
+       "imageUrl" : "img/channelLinup.png"
+      },
+      {
+       "id" : 4,
+       "name" : "Rate Card",
+       "description" : "Start a Rate Card",
+       "imageUrl" : "img/rateCard.png"
+      },
+      {
+       "id" : 5,
+       "name" : "Campaign",
+       "description" : "Contains a set of projects",
+       "imageUrl" : "img/campaign.png"
+      },
+      {
+       "id" : 6,
+       "name" : "Direct Mail",
+       "description" : "Start a direct mail project",
+       "imageUrl" : "img/directMail.png"
+      },
+      {
+       "id" : 7,
+       "name" : "Email",
+       "description" : "Start an email project",
+       "imageUrl" : "img/email.png"
+      }];
+
+
+       var categoryList = [{
+        "id": 1,
+        "name": "Retail",
+        "description": "This is Retail",
+        "createdDate": 1429009860000,
+        "modifiedDate": null,
+        "status": "Retail",
+        "required": true,
+        "labels": [
+            {
+                "id": 1,
+                "name": "Backer",
+                "description": "This is Backer",
+                "labelCategoryId": null,
+                "createdDate": null,
+                "modifiedDate": null,
+                "categoryDTO": null,
+                "status": "1",
+                "tacticLabels": null
+            },
+            {
+                "id": 2,
+                "name": "Brochure",
+                "description": "This is Brochure",
+                "labelCategoryId": null,
+                "createdDate": null,
+                "modifiedDate": null,
+                "categoryDTO": null,
+                "status": "1",
+                "tacticLabels": null
+            },
+            {
+                "id": 3,
+                "name": "Banner",
+                "description": "This is Banner",
+                "labelCategoryId": null,
+                "createdDate": null,
+                "modifiedDate": null,
+                "categoryDTO": null,
+                "status": "1",
+                "tacticLabels": null
+            },
+            {
+                "id": 4,
+                "name": "Retail Poster",
+                "description": "This is Retail Poster",
+                "labelCategoryId": null,
+                "createdDate": null,
+                "modifiedDate": null,
+                "categoryDTO": null,
+                "status": "1",
+                "tacticLabels": null
+            },
+            {
+                "id": 5,
+                "name": "Lanyard",
+                "description": "This is Lanyard",
+                "labelCategoryId": null,
+                "createdDate": null,
+                "modifiedDate": null,
+                "categoryDTO": null,
+                "status": "1",
+                "tacticLabels": null
+            },
+            {
+                "id": 6,
+                "name": "Flyer",
+                "description": "This is Flyer",
+                "labelCategoryId": null,
+                "createdDate": null,
+                "modifiedDate": null,
+                "categoryDTO": null,
+                "status": "1",
+                "tacticLabels": null
+            },
+            {
+                "id": 7,
+                "name": "Door Hanger",
+                "description": "This is Door Hanger",
+                "labelCategoryId": null,
+                "createdDate": null,
+                "modifiedDate": null,
+                "categoryDTO": null,
+                "status": "1",
+                "tacticLabels": null
+            },
+            {
+                "id": 8,
+                "name": "Decal",
+                "description": "This is Decal",
+                "labelCategoryId": null,
+                "createdDate": null,
+                "modifiedDate": null,
+                "categoryDTO": null,
+                "status": "1",
+                "tacticLabels": null
+            },
+            {
+                "id": 9,
+                "name": "Coupon",
+                "description": "This is Coupon",
+                "labelCategoryId": null,
+                "createdDate": null,
+                "modifiedDate": null,
+                "categoryDTO": null,
+                "status": "1",
+                "tacticLabels": null
+            },
+            {
+                "id": 10,
+                "name": "Counter Card",
+                "description": "This is Counter Card",
+                "labelCategoryId": null,
+                "createdDate": null,
+                "modifiedDate": null,
+                "categoryDTO": null,
+                "status": "1",
+                "tacticLabels": null
+            },
+            {
+                "id": 11,
+                "name": "Take One",
+                "description": "This is Take One",
+                "labelCategoryId": null,
+                "createdDate": null,
+                "modifiedDate": null,
+                "categoryDTO": null,
+                "status": "1",
+                "tacticLabels": null
+            },
+            {
+                "id": 12,
+                "name": "Table Tent",
+                "description": "This is Coupon",
+                "labelCategoryId": null,
+                "createdDate": null,
+                "modifiedDate": null,
+                "categoryDTO": null,
+                "status": "1",
+                "tacticLabels": null
+            },
+            {
+                "id": 13,
+                "name": "Window Banner",
+                "description": "This is Window Banner",
+                "labelCategoryId": null,
+                "createdDate": null,
+                "modifiedDate": null,
+                "categoryDTO": null,
+                "status": "1",
+                "tacticLabels": null
+            },
+            {
+                "id": 14,
+                "name": "Sign",
+                "description": "This is Sign",
+                "labelCategoryId": null,
+                "createdDate": null,
+                "modifiedDate": null,
+                "categoryDTO": null,
+                "status": "1",
+                "tacticLabels": null
+            }
+        ]
+    },
+    {
+        "id": 2,
+        "name": "Advertising & Design",
+        "description": "This is Advertising & Design",
+        "createdDate": 1429009860000,
+        "modifiedDate": null,
+        "status": "Advertising & Design",
+        "required": true,
+        "labels": [
+            {
+                "id": 1,
+                "name": "Billboard",
+                "description": "This is Billboard",
+                "labelCategoryId": null,
+                "createdDate": null,
+                "modifiedDate": null,
+                "categoryDTO": null,
+                "status": "1",
+                "tacticLabels": null
+            },
+            {
+                "id": 2,
+                "name": "Brochures",
+                "description": "This is Brochures",
+                "labelCategoryId": null,
+                "createdDate": null,
+                "modifiedDate": null,
+                "categoryDTO": null,
+                "status": "1",
+                "tacticLabels": null
+            },
+            {
+                "id": 3,
+                "name": "Flyer",
+                "description": "This is Flyer",
+                "labelCategoryId": null,
+                "createdDate": null,
+                "modifiedDate": null,
+                "categoryDTO": null,
+                "status": "1",
+                "tacticLabels": null
+            },
+            {
+                "id": 4,
+                "name": "FSI",
+                "description": "This is FSI",
+                "labelCategoryId": null,
+                "createdDate": null,
+                "modifiedDate": null,
+                "categoryDTO": null,
+                "status": "1",
+                "tacticLabels": null
+            },
+            {
+                "id": 5,
+                "name": "Letter",
+                "description": "This is Letter",
+                "labelCategoryId": null,
+                "createdDate": null,
+                "modifiedDate": null,
+                "categoryDTO": null,
+                "status": "1",
+                "tacticLabels": null
+            },
+            {
+                "id": 6,
+                "name": "Postcard",
+                "description": "This is Postcard",
+                "labelCategoryId": null,
+                "createdDate": null,
+                "modifiedDate": null,
+                "categoryDTO": null,
+                "status": "1",
+                "tacticLabels": null
+            },
+            {
+                "id": 7,
+                "name": "ROP",
+                "description": "This is ROP",
+                "labelCategoryId": null,
+                "createdDate": null,
+                "modifiedDate": null,
+                "categoryDTO": null,
+                "status": "1",
+                "tacticLabels": null
+            },
+            {
+                "id": 8,
+                "name": "Self Mailer",
+                "description": "This is Self Mailer",
+                "labelCategoryId": null,
+                "createdDate": null,
+                "modifiedDate": null,
+                "categoryDTO": null,
+                "status": "1",
+                "tacticLabels": null
+            },
+            {
+                "id": 9,
+                "name": "Shared Mail",
+                "description": "This is Shared Mail",
+                "labelCategoryId": null,
+                "createdDate": null,
+                "modifiedDate": null,
+                "categoryDTO": null,
+                "status": "1",
+                "tacticLabels": null
+            }
+        ]
+    },
+    {
+        "id": 3,
+        "name": "Business",
+        "description": "This is Business",
+        "createdDate": 1429009860000,
+        "modifiedDate": null,
+        "status": "Business",
+        "required": true,
+        "labels": [
+            {
+                "id": 1,
+                "name": "Billboard",
+                "description": "This is Billboard",
+                "labelCategoryId": null,
+                "createdDate": null,
+                "modifiedDate": null,
+                "categoryDTO": null,
+                "status": "1",
+                "tacticLabels": null
+            },
+            {
+                "id": 2,
+                "name": "FSI",
+                "description": "This is FSI",
+                "labelCategoryId": null,
+                "createdDate": null,
+                "modifiedDate": null,
+                "categoryDTO": null,
+                "status": "1",
+                "tacticLabels": null
+            },
+            {
+                "id": 3,
+                "name": "ROP",
+                "description": "This is ROP",
+                "labelCategoryId": null,
+                "createdDate": null,
+                "modifiedDate": null,
+                "categoryDTO": null,
+                "status": "1",
+                "tacticLabels": null
+            },
+            {
+                "id": 4,
+                "name": "Shared Mail",
+                "description": "This is Shared Mail",
+                "labelCategoryId": null,
+                "createdDate": null,
+                "modifiedDate": null,
+                "categoryDTO": null,
+                "status": "1",
+                "tacticLabels": null
+            }
+        ]
+    }];
+
+    var projectConfigXMLObj = {
+        "proofName" : "Dev_Sample_Description",
+        "tacticName" : "14Q2_BUS_FSI_8x10_Clone",
+        "supplier" : "Download (no vendor)",
+        "customizations" : [
+            {
+                "seq" : 1,
+                "required" : false,
+                "displayLabel" : "Size",
+                "type" : "DROPDOWNLIST",
+                "defaultValue" : "Select Size",
+                "validationExp" : "",
+                "label" : "Size",
+                "values" : [
+                    {
+                        "seq" : 1,
+                        "title" : "3.22 x 3 (trim)",
+                        "code" : "3.22*3"
+                    },
+                    {   
+                        "seq" : 2,
+                        "title" : "3.75 x 4.75 (trim)",
+                        "code" : "3.75x4.75"
+                    },
+                    {   
+                        "seq" : 3,
+                        "title" : "4 x 5 (trim)",
+                        "code" : "4*5"
+                    }
+                ]
+            },
+            {
+                "seq" : 2,
+                "required" : true,
+                "displayLabel" : "Phone",
+                "type" : "TEXT",
+                "defaultValue" : "XXX-XXX-XXXX",
+                "validationExp" : "PHONE",
+                "label" : "Phone",
+            },
+            {
+                "seq" : 3,
+                "required" : true,
+                "displayLabel" : "Offer",
+                "type" : "DROPDOWNLIST",
+                "defaultValue" : "Select Offer",
+                "validationExp" : "",
+                "label" : "OfferID",
+                "values" : []
+            },
+            {
+                "seq" : 4,
+                "required" : true,
+                "displayLabel" : "Business Product",
+                "type" : "DROPDOWNLIST",
+                "defaultValue" : "Select Product",
+                "validationExp" : "",
+                "label" : "Product",
+                "values" : [
+                    {
+                        "seq" : 1,
+                        "title" : "Bundle",
+                        "code" : "Bundle Product"
+                    },
+                    {   
+                        "seq" : 2,
+                        "title" : "Internet",
+                        "code" : "Internet"
+                    }
+                ]
+            },
+            {
+                "seq" : 5,
+                "required" : true,
+                "displayLabel" : "Market",
+                "type" : "DROPDOWNLIST",
+                "defaultValue" : "Select Market",
+                "validationExp" : "",
+                "label" : "Market",
+                "values" : [
+                    {
+                        "seq" : 1,
+                        "title" : "Acadiana",
+                        "code" : "Acadiana"
+                    },
+                    {   
+                        "seq" : 2,
+                        "title" : "Baton Rouge",
+                        "code" : "Baton Rouge"
+                    }
+                ]
+            },
+            {
+                "seq" : 6,
+                "required" : false,
+                "displayLabel" : "Sweetener 1",
+                "type" : "DROPDOWNLIST",
+                "defaultValue" : "Select Sweetener",
+                "validationExp" : "",
+                "label" : "SWEETENER_1",
+                "values" : [
+                    {
+                        "seq" : 1,
+                        "title" : "10 GB of Cox Business Online Backup",
+                        "code" : "SWBUS_001"
+                    },
+                    {   
+                        "seq" : 2,
+                        "title" : "10 GB of Online Backup at no additional cost",
+                        "code" : "SWBUS_002"
+                    }
+                ]
+            },
+            {
+                "seq" : 7,
+                "required" : false,
+                "displayLabel" : "Sweetener 2",
+                "type" : "DROPDOWNLIST",
+                "defaultValue" : "Select Sweetener",
+                "validationExp" : "",
+                "label" : "SWEETENER_2",
+                "values" : [
+                    {
+                        "seq" : 1,
+                        "title" : "10 GB of Cox Business Online Backup",
+                        "code" : "SWBUS_001"
+                    },
+                    {   
+                        "seq" : 2,
+                        "title" : "10 GB of Online Backup at no additional cost",
+                        "code" : "SWBUS_002"
+                    }
+                ]
+            },
+            {
+                "seq" : 8,
+                "required" : false,
+                "displayLabel" : "Sweetener 3",
+                "type" : "DROPDOWNLIST",
+                "defaultValue" : "Select Sweetener",
+                "validationExp" : "",
+                "label" : "SWEETENER_3",
+                "values" : [
+                    {
+                        "seq" : 1,
+                        "title" : "10 GB of Cox Business Online Backup",
+                        "code" : "SWBUS_001"
+                    },
+                    {   
+                        "seq" : 2,
+                        "title" : "10 GB of Online Backup at no additional cost",
+                        "code" : "SWBUS_002"
+                    }
+                ]
+            }
+        ]
+    };
+      // returns the current list of project types
+      $httpBackend.whenGET('/projecttypes').respond(projectTypeList);
+
+      // returns the list of categories
+      $httpBackend.whenGET('/categories').respond(categoryList);
+
+      // returns the list of project configuration   
+      $httpBackend.whenGET('/projectconfigurations').respond(projectConfigXMLObj);
+
+      /*$httpBackend.whenPOST('/phones').respond(function(method, url, data) {
+        var phone = angular.fromJson(data);
+        phones.push(phone);
+        return [200, phone, {}];
+      });*/
+      $httpBackend.whenGET(/scripts\//).passThrough();
+      $httpBackend.whenGET(/naehasstore_temp_partials\//).passThrough();
+    };
+});

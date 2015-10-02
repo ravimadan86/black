@@ -1,0 +1,63 @@
+define(['angular'], function (angular) {
+ 'use strict';
+ return ['$modal','$sanitize','$rootScope',function($modal,$sanitize,$rootScope){
+ 	
+ 	    var modalDefaults = {
+            backdrop: true,
+            keyboard: false,
+            modalFade: true,
+            templateUrl: 'partials/errorModal.html'
+        };
+
+        var call = 0;
+
+        var modalOptions = {
+            /*closeButtonText: 'Close',
+            actionButtonText: 'OK',
+            headerText: 'Proceed?',
+            bodyText: 'Perform this action?'*/
+        };
+
+        this.showModal = function (customModalDefaults, customModalOptions) {
+            call++;
+            if(call===1){
+                if (!customModalDefaults) customModalDefaults = {};
+                customModalDefaults.backdrop = 'static';
+                return this.show(customModalDefaults, customModalOptions);
+            }
+        };
+
+        this.show = function (customModalDefaults, customModalOptions) {
+            //Create temp objects to work with since we're in a singleton service
+            var tempModalDefaults = {};
+            var tempModalOptions = {};
+
+            //Map angular-ui modal custom defaults to modal defaults defined in service
+            angular.extend(tempModalDefaults, modalDefaults, customModalDefaults);
+
+            //Map modal.html $scope custom properties to defaults defined in service
+            angular.extend(tempModalOptions, modalOptions, customModalOptions);
+
+            if (!tempModalDefaults.controller) {
+                tempModalDefaults.controller = ['$scope','$modalInstance',function ($scope, $modalInstance) {
+                    $scope.modalOptions = tempModalOptions;
+                    $scope.modalDefaults = tempModalDefaults;
+                    $scope.modalOptions.ok = function (result) {
+                        $modalInstance.close(result);
+                    };
+                    $scope.modalOptions.close = function (result) {
+                        $modalInstance.dismiss('cancel');
+                        $rootScope.modalInstance = null;
+                        call = 0;
+                    };
+                    $rootScope.modalInstance = angular.copy($modalInstance);
+                }];
+            }
+            return $modal.open(tempModalDefaults);
+        };
+
+        this.resetCall = function(){
+            call = 0;
+        };
+ }];
+});

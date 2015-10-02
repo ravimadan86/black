@@ -1,0 +1,142 @@
+define(['angularAMD'], 
+    function(angularAMD) {
+    'use strict';
+	return ['$routeProvider','$tooltipProvider','$locationProvider', function($routeProvider,$tooltipProvider,$locationProvider) {
+
+        //User Module Routes
+        $routeProvider.when('/login', angularAMD.route({
+            templateUrl: 'scripts/modules/user/login/loginView.html',
+            controller: 'LoginCtrl',
+            controllerUrl: 'modules/user/login/loginCtrl'
+        }));
+
+        $routeProvider.when('/requestaccess', angularAMD.route({
+            templateUrl: 'scripts/modules/user/requestAccess/requestAccessView.html',
+            controller:'RequestAccessCtrl',
+            controllerUrl: 'modules/user/requestAccess/requestAccessCtrl'
+        }));
+
+        $routeProvider.when('/forgotpassword', angularAMD.route({
+            templateUrl: 'scripts/modules/user/forgotPassword/forgotPasswordView.html',
+            controller:'ForgotPasswordCtrl',
+            controllerUrl: 'modules/user/forgotPassword/forgotPasswordCtrl'
+        }));
+
+        $routeProvider.when('/changePassword', angularAMD.route({
+            templateUrl: 'scripts/modules/user/changePassword/changePassword.html',
+            controller:'ChangePasswordCtrl',
+            controllerUrl: 'modules/user/changePassword/changePasswordCtrl'
+        }));
+
+        //Tactic Module Routes
+        $routeProvider.when('/tactic', angularAMD.route({
+            templateUrl: 'scripts/modules/tactic/tacticView.html',
+            controller:'TacticCtrl',
+            controllerUrl: 'modules/tactic/tacticCtrl'
+        }));
+
+        //Home Module Routes
+        $routeProvider.when('/home', angularAMD.route({
+            templateUrl: 'scripts/modules/home/homeView.html',
+            controller: 'HomeCtrl',
+            controllerUrl: 'modules/home/homeCtrl'
+        }));
+
+        //Management Module Routes
+        $routeProvider.when('/labelmgmnt', angularAMD.route({
+            templateUrl: 'scripts/modules/management/labelManagement/labelManagementView.html',
+            controller:'LabelManagementCtrl',
+            controllerUrl: 'modules/management/labelManagement/labelManagementCtrl'
+        }));
+
+        $routeProvider.when('/prodmgmnt', angularAMD.route({
+            templateUrl: 'scripts/modules/management/productionManagement/productionManagementView.html',
+            controller:'ProductionManagementCtrl',
+            controllerUrl: 'modules/management/productionManagement/productionManagementCtrl'
+        }));
+
+        $routeProvider.when('/tacticmgmnt', angularAMD.route({
+            templateUrl: 'scripts/modules/management/tacticManagement/tacticManagementView.html',
+            controller:'TacticManagementCtrl',
+            controllerUrl: 'modules/management/tacticManagement/tacticManagementCtrl'
+        }));
+
+        $routeProvider.when('/usermgmnt', angularAMD.route({
+            templateUrl: 'scripts/modules/management/userManagement/userManagementView.html',
+            controller:'UserManagementCtrl',
+            controllerUrl: 'modules/management/userManagement/userManagementCtrl'
+        }));
+
+        /*$routeProvider.when('/newtactic', angularAMD.route({
+            templateUrl: 'scripts/modules/management/tacticManagement/newTactic/newTacticView.html',
+            controller:'NewTacticCtrl',
+            controllerUrl: 'modules/management/tacticManagement/newTactic/newTacticCtrl'
+        }));*/
+
+        $routeProvider.when('/project/:param1', angularAMD.route({
+            templateUrl: 'scripts/modules/admin/project/newProject/newProjectView.html',
+            controller:'NewProjectCtrl',
+            controllerUrl: 'modules/admin/project/newProject/newProjectCtrl'
+        }));
+
+        $routeProvider.when('/admin', angularAMD.route({
+            templateUrl: 'scripts/modules/admin/admin.html'
+        }));
+
+
+        //Raw Pages Routes
+        $routeProvider.when('/raw_home', angularAMD.route({
+            templateUrl: 'naehasstore_temp_partials/home-store.html'
+        }));
+
+        $routeProvider.when('/raw_labelMGT', angularAMD.route({
+            templateUrl: 'naehasstore_temp_partials/label-management.html'
+        }));
+
+        $routeProvider.when('/raw_prodMGT', angularAMD.route({
+            templateUrl: 'naehasstore_temp_partials/production-management.html'
+        }));
+
+        $routeProvider.when('/raw_userMGT', angularAMD.route({
+            templateUrl: 'naehasstore_temp_partials/user-management.html'
+        }));
+
+        $routeProvider.when('/raw_tacticMGT', angularAMD.route({
+            templateUrl: 'naehasstore_temp_partials/tactics-management.html'
+        }));
+
+        $routeProvider.when('/raw_tacticCSTZ', angularAMD.route({
+            templateUrl: 'naehasstore_temp_partials/tactics-customization.html'
+        }));
+
+        $routeProvider.when('/raw_tacticNEW', angularAMD.route({
+            templateUrl: 'naehasstore_temp_partials/new-tactic.html',
+            controller:'NewProjectCtrl',
+            controllerUrl: 'modules/admin/project/newProject/newProjectCtrl'
+        }));
+
+        $routeProvider.when('/raw_tacticProgress', angularAMD.route({
+            templateUrl: 'naehasstore_temp_partials/in-progress.html'
+        }));
+
+        $routeProvider.when('/raw_dashboard', angularAMD.route({
+            templateUrl: 'naehasstore_temp_partials/dashboard.html'
+        }));
+
+        $routeProvider.when('/raw_admin', angularAMD.route({
+            templateUrl: 'naehasstore_temp_partials/admin.html'
+        }));
+
+        $routeProvider.otherwise({redirectTo: '/home'});
+
+        //$locationProvider.html5Mode(true);
+
+        $tooltipProvider.setTriggers({
+            'mouseenter': 'mouseleave',
+            'click': 'click',
+            'focus': 'blur',
+            'keyup': 'blur' // <- This ensures the tooltip will go away on mouseleave
+        });
+
+	}]
+});

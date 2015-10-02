@@ -1,0 +1,79 @@
+define([], function () {
+'use strict';
+
+	return ['$scope','Constants','$http','USER','$rootScope','$q','$location','md5','$sanitize','$injector','UTILS','COMMONSTORE', function ($scope,Constants,$http,USER,$rootScope,$q,$location,md5,$sanitize,$injector,UTILS,COMMONSTORE) {
+
+		// $injector.invoke(ParentCtrl, this, {$scope: $scope});
+
+		$scope.tabsList = [
+		{
+			"id" : 1,
+			"name" : "Home",
+			"routeUrl" : "home",
+			"visible" : true,
+			"role" : "user",
+			"submenu" : false,
+			"subUrls" : ["home"]
+		},
+		{
+			"id" : 2,
+			"name" : "Campaigns",
+			"routeUrl" : "",
+			"visible" : true,
+			"role" : "user",
+			"submenu" : false,
+			"subUrls" : ["home"]
+		},
+		{
+			"id" : 3,
+			"name" : "Projects",
+			"routeUrl" : "",
+			"visible" : true,
+			"role" : "user",
+			"submenu" : true,	
+			"submenusList" : []
+		},
+		{
+			"id" : 4,
+			"name" : "Brand Resources",
+			"routeUrl" : "",
+			"visible" : true,
+			"role" : "user",
+			"submenu" : false,
+			"subUrls" : ["home"]
+		},
+		{
+			"id" : 5,
+			"name" : "Dashboards",
+			"routeUrl" : "",
+			"visible" : true,
+			"role" : "user",
+			"submenu" : false,
+			"subUrls" : ["home"]
+		}];
+
+		$scope.logout = function(){
+			/*UTILS.clearSession();
+			UTILS.clearStorage();
+           	$location.path('login');*/
+		};
+		
+		var init = function(){
+			var currentUrl = $location.path().substring(1);
+			var obj = _.find($scope.tabsList,function(tab){
+				return _.find(tab.subUrls,function(url){
+					return url == currentUrl;
+				});
+			});
+			$scope.activeTab = obj;
+		};
+		init();
+
+		$scope.changeTab = function(tab){
+			if(tab.routeUrl){
+				$location.path(tab.routeUrl);
+			}
+		};
+
+	}];
+});

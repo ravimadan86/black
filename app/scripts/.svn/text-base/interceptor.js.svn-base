@@ -1,0 +1,49 @@
+define(['angular', 'app'], function(angular, app) {
+ 'use strict';
+
+  return ['$provide','$httpProvider', function($provide, $httpProvider) {
+
+      $httpProvider.interceptors.push(['$q','$location','$rootScope','Constants','UTILS','$injector',function($q,$location,$rootScope,Constants,UTILS,$injector) {
+        return {
+         'request': function(config) {
+              config.headers['X-Requested-With']='XMLHttpRequest';
+              if(UTILS.getFromSession('authToken'))
+              {
+               config.headers['X-AUTH-TOKEN'] = UTILS.getFromSession('authToken');
+              }
+              return config || $q.when(config);
+          },
+
+          'responseError': function(rejection) {
+            $rootScope.$broadcast('closeModals',true);
+            $rootScope.interceptorErrorMessage = rejection.statusText;
+            $rootScope.interceptorErrorShow = true;
+            $injector.invoke(['$http','MODAL',function($http, MODAL) {
+              /*var modalOptions = {
+                  headerText: 'Error',
+                      bodyText: rejection.statusText + Constants.loginUrlHtmlMessage,
+                      alertType: 'danger'
+              };
+              if($location.path() !== '/login')
+                MODAL.showModal({}, modalOptions);*/
+              UTILS.clearSession();
+              $location.path("login");
+            }]);
+            
+            return $q.reject(rejection);
+          }
+        };
+      }]);
+  }];
+
+  /*app.run(['$rootScope', '$http','$location','MODAL', function($rootScope, $http,$location,MODAL) {
+    $rootScope.$on("$routeChangeStart", function (event, next, current) {
+        if($rootScope.modalInstance){
+          $rootScope.modalInstance.dismiss('cancel');
+          $rootScope.modalInstance = null;
+          MODAL.resetCall();
+        }
+     });
+  }]);*/
+  
+});

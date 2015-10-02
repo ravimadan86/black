@@ -1,0 +1,16 @@
+define(['angular'], function (angular) {
+ 'use strict';
+ return ['$http','Constants',function($http,Constants){
+ 	
+ 	var jsonConfig = { 
+        headers:{
+                    'Content-Type':'application/json'
+                }
+    };
+
+    //Get all project type list
+    this.getProjectTypeList = function(){
+    	return $http.get(Constants.baseUrl + '/project/types');	
+    }
+ }];
+});

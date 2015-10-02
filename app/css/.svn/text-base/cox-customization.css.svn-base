@@ -1,0 +1,550 @@
+/*common*/
+body {
+  color: #666;
+  font-family: 'segoe_ui_regular';
+  font-size: 16px;
+}
+.bg-gray {
+  background: #ebebeb;
+  border-top: 1px solid #dbdbdb;
+  border-bottom: 1px solid #dbdbdb;
+}
+.display-inline {
+  display: inline-block;
+}
+.text-left {
+  text-align: left!important;
+}
+.asterisk {
+  color: #f00;
+}
+.center-block {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+.white-box {
+  background: #fff;
+  border-radius: 0px;
+  min-height: 100px;
+  padding: 20px;
+  margin-bottom: 20px;
+  color: #666;
+}
+ .white-box-bordered{
+  border:1px solid #ccc;
+ }
+.btn.custom-gray {
+  background-color: #ebebeb!important;
+}
+h1, h2, h3, h4, h5, h6 {
+  color: #000;
+  font-weight: bold;
+}
+.text18 {
+  font-size: 18px;
+  padding: 30px 0;
+}
+.text-white {
+  color: #ffffff!important;
+}
+.text-blue {
+  color: #0099cc;
+}
+.text-dblue {
+  color: #006699;
+}
+.form-control {
+ border-radius: 0!important;
+  margin-right: 20px;
+  height: 28px;
+  padding: 4px 7px 5px 7px;
+  box-shadow: none;
+  border: 1px solid #b7b7b7;
+}
+.icon-lg {
+  font-size: 24px;
+}
+.btn.btn-gray {
+  background: #999999;
+  color: #fff;
+}
+.btn.btn-themeblue {
+  background: #006699;
+  color: #fff;
+  vertical-align: top;
+}
+/*================*/
+
+
+.requestAccess .form-section {
+  background: #fff;
+  border-radius: 5px;
+  margin: 15px 0;
+}
+.requestAccess .form-header h3{
+  color: #fff;
+}
+.img-responsive.img-center {
+  margin: 0 auto;
+}
+.form-header {
+  background: #006699;
+  color: #fff;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+  min-height: 35px;
+  padding: 15px;
+}
+.form-content {
+  min-height: 35px;
+  padding: 15px 0;
+}
+.form-part {
+  padding: 20px;
+}
+.radio {
+  margin-right: 10px;
+}
+.form-group {
+  font-weight: normal;
+  font-size: 14px;
+  color: #666;
+}
+.form-group .control-label {
+  font-weight: normal;
+  font-size: 15px;
+}
+.login h2 {
+  font-weight: bold!important;
+}
+.login .white-box {
+  margin-top: 50px;
+  min-height: 325px;
+}
+.login-fields {
+  margin: 30px 0;
+  padding: 0;
+}
+.login-fields li {
+  list-style: none;
+  border-bottom: 1px solid #999;
+  padding: 10px 0 5px 5px;
+  position: relative;
+}
+.login-fields li i.fa {
+  font-size: 24px;
+  margin-right: 10px;
+  position: absolute;
+  left: 0px;
+  top:14px;
+}
+.login-fields li input[type=text], .login-fields li input[type=password] {
+  font-size: 22px;
+  border: none;
+  outline: none;
+  padding-left: 30px;
+  width: 100%;
+}
+.alternateLoginLinks .checkbox{
+  margin-top: 0px;
+  margin-bottom:20px;
+}
+.alternateLoginLinks a.forgotPassLink {
+  color: #0099cc;
+}
+.login-fields li a {
+  color: #0099cc;
+}
+.breadcrumb {
+  padding: 8px 0px;
+  margin-bottom: 15px;
+  margin-top: -30px;
+  background: transparent;
+  border-radius: 0px;
+  -webkit-border-radius: 0px;
+  -moz-border-radius: 0px;
+}
+.btn-holder button {
+  margin-left: 10px;
+  margin-bottom: 10px;
+}
+.btn-orange {
+  background: #ff9933;
+  color: #fff;
+  padding-left: 30px;
+  padding-right: 30px;
+  margin-bottom: 5px;
+}
+.btn-transparent {
+  background: none;
+  border: 0;
+  padding: 0px;
+}
+table input {
+  padding: 2px 5px!important;
+  text-align: left;
+}
+.icon-action {
+  margin-top: 5px;
+}
+.headers-newclu, .headers-newRateCard {
+  margin-bottom: 30px;
+}
+
+
+.table-hd ul:not(.dropdown-menu) {
+  margin: 0;
+  padding: 0;
+  background: #006699;
+}
+.table-hd ul:not(.dropdown-menu) li {
+  margin: 0;
+  padding:15px 8px;
+  text-transform: uppercase;
+  color: #fff!important;
+  list-style: none;
+  display: inline-block;
+}
+
+.table-rw ul:not(.dropdown-menu) {
+  margin: 5px 0;
+  padding: 0;
+  background: #fff;
+}
+.table-rw ul:not(.dropdown-menu) li {
+  margin: 0;
+  padding: 15px 8px;
+  text-transform: uppercase;
+  color: #666;
+  list-style: none;
+  display: inline-block;
+}
+
+.headers-newclu .table-hd ul:not(.dropdown-menu) li:nth-child(1), .headers-newclu .table-rw ul:not(.dropdown-menu) li:nth-child(1) {
+  width: 10%;
+  min-width:108px;
+}
+.headers-newclu .table-hd ul:not(.dropdown-menu) li:nth-child(2), .headers-newclu .table-rw ul:not(.dropdown-menu) li:nth-child(2) {
+  width: 70%;
+}
+.headers-newclu .table-hd ul:not(.dropdown-menu) li:nth-child(3), .headers-newclu .table-rw ul:not(.dropdown-menu) li:nth-child(3) {
+  width: 10%;
+}
+.headers-newclu .table-hd ul:not(.dropdown-menu) li:last-child, .headers-newclu .table-rw ul:not(.dropdown-menu) li:last-child {
+  float: right;
+  margin-right: 10px;
+  text-align: right;
+}
+
+.headers-newRateCard .table-hd ul:not(.dropdown-menu) li:nth-child(1), .headers-newRateCard .table-rw ul:not(.dropdown-menu) li:nth-child(1) {
+  width: 10%;
+  min-width:108px;
+}
+.headers-newRateCard .table-hd ul:not(.dropdown-menu) li:nth-child(2), .headers-newRateCard .table-rw ul:not(.dropdown-menu) li:nth-child(2) {
+  width: 70%;
+}
+.headers-newRateCard .table-hd ul:not(.dropdown-menu) li:nth-child(3), .headers-newRateCard .table-rw ul:not(.dropdown-menu) li:nth-child(3) {
+  width: 10%;
+}
+.headers-newRateCard .table-hd ul:not(.dropdown-menu) li:last-child, .headers-newRateCard .table-rw ul:not(.dropdown-menu) li:last-child {
+  float: right;
+  margin-right: 10px;
+  text-align: right;
+}
+
+
+.level-1.table-rw ul:not(.dropdown-menu) {
+  margin: 5px 0;
+  padding: 0;
+  background: #fff;
+}
+.level-1.table-rw ul:not(.dropdown-menu) li {
+  margin: 0;
+  text-transform: uppercase;
+  color: #666;
+  list-style: none;
+  display: inline-block;
+}
+
+.header-list{
+  background: #cccccc;
+  color: #006699;
+  font-weight: bold;
+  padding: 15px;
+  text-transform: uppercase;
+}
+.level-2.table-rw ul:not(.dropdown-menu) {
+  margin: 5px 0;
+  padding: 0;
+  background: #f2f2f2;
+   border-bottom: 1px solid #fff;
+}
+.level-2.table-rw ul:not(.dropdown-menu) li {
+  margin: 0;
+  text-transform: uppercase;
+  color: #006699;
+  list-style: none;
+  display: inline-block;
+  background: #f2f2f2;
+ 
+}
+
+.level-2 .iconContainerButton{
+  margin: 0; padding: 0;
+  background: #fff!important;
+}
+
+.form-horizontal .control-label{
+  padding-top: 2px;
+  padding-bottom: 2px;
+}
+
+.header-edit{
+  clear: both;
+}
+.header-edit .table, .header-edit .table .table.{
+  background: transparent;
+}
+.header-edit .table.lastLevelTable, .header-edit .table .table.lastLevelTable{
+  background: #e1e1e1;
+}
+.header-edit table{
+  margin-bottom: 0;
+}
+
+.header-edit table th {
+  background: #bedbea;
+  color: #006699;
+  font-weight: bold;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+.header-edit table tr.canNotIncluded{
+   background: #f8f8f8;
+}
+.header-edit table tr td .effDate{
+  color: #333;
+}
+.header-edit table tr.canNotIncluded td .effDate{
+  color: #ff0000;
+}
+.header-edit table tr td {
+  border-bottom: 1px solid #fff;
+  vertical-align: middle!important;
+}
+.header-edit table td.cellPaddingNone{
+  padding: 0px!important;
+}
+.header-edit table td .notesInput{
+  text-overflow:ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
+.header-edit table tr:last-child td {
+  border-bottom: 0px solid #fff;
+}
+.tableSubHeaderArea .header-edit table tr td{
+  border-bottom: 1px solid #fff;
+}
+.tableSubHeaderArea .header-edit table tr:last-child  td{
+  border-bottom: 0px solid #fff;
+}
+.header-edit table table{
+  /*margin-left: 8px;*/
+  background: #dde1e3;
+}
+.header-edit table table th{
+  background: #dde1e3;
+}
+.expanded-level3{
+  background: #dde1e3;
+}
+.expanded-level3 table td:first-child{ 
+  text-align: center;
+}
+
+.tableSubHeaderArea .table-hd ul:not(.dropdown-menu){
+  background: #555;
+}
+.tableSubHeaderArea .table-rw ul:not(.dropdown-menu){
+  background: #ebebeb;
+}
+.tableSubHeaderArea .table-rw ul:not(.dropdown-menu) li {
+  font-weight: normal;
+}
+.tableSubHeaderArea .header-edit table th{
+  background: #cacaca;
+  color: #2F2F2F;
+}
+
+
+.calendarInput{
+  display: inline-block;
+  vertical-align: top;
+}
+.search-panel input, .search-panel select {
+  max-width: 12%;
+  padding: 5px 10px;
+  margin-bottom: 5px;
+  vertical-align: top;
+  font-style: italic;
+  background: #fff;
+  border: 1px solid #b7b7b7;
+}
+.search-panel .navbar-default {
+  background-color: #f0f3f5;
+  border-color: #f0f3f5;
+  margin-bottom: 0;
+}
+.search-panel .navbar-default .navbar-toggle{
+  float: left;
+}
+.change-view {
+  text-align: right;
+}
+
+.btn-view {
+  border: 1px solid #ccc;
+  padding: 5px 10px 1px 10px;
+  margin-left: 5px;
+  margin-bottom: 5px;
+  border-radius: 5px;
+  outline: none;
+}
+.selected {
+  background: #fff;
+}
+.selected i {
+  color: #006699;
+}
+.gridView {
+  margin-top: 40px;
+}
+.gridView .white-box img {
+  margin: 0 auto;
+  max-height: 100%;
+}
+.gridView .info-box {
+  margin-bottom: 15px;
+}
+.gridView .info-box label {
+  font-weight: normal;
+  font-size: 14px;
+  color: #999;
+  text-transform: uppercase;
+  padding-right: 10px;
+  line-height: 10px!important;
+}
+.gridView .info-box span {
+  font-size: 14px;
+  color: #333;
+  line-height: 10px!important;
+}
+.gridView .grid-items {
+  margin-bottom: 80px;
+}
+.btn-calendar {
+  float: right;
+  margin-top:5px;
+  z-index: 9999;
+}
+.order-kit tr th:last-child, .order-kit tr td:last-child {
+  text-align: center!important;
+}
+.order-kit tr td:last-child input {
+  float: none;
+}
+.btn-close {
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  background: #f2f2f2;
+  position: absolute;
+  top: 5px;
+  right: 10px;
+}
+.btn-close i {
+  color: #006599;
+  font-size: 16px;
+  margin-left: -5px;
+  margin-top: -8px;
+  position: absolute;
+}
+/*======= carousel settings ======== */
+.home-carousel {
+  background: #fff;
+  border-bottom: 1px solid #ccc;
+  padding: 30px;
+  margin-top: 50px;
+  color: #333;
+  min-height: 450px;
+}
+.home-carousel h2 {
+  color: #000;
+}
+.carousel-control {
+  width: auto;
+  color: #666;
+  text-shadow: none;
+}
+.carousel-control:hover {
+  color: #006699;
+}
+.carousel-control.left, .carousel-control.right {
+  background-image: none;
+}
+.text-intro {
+  font-size: 31px;
+  font-family: "segoe_ui_regular";
+  margin-bottom: -10px;
+}
+.text-main {
+  font-size: 45px;
+  font-family: "segoe_ui_bold";
+  color: #006699;
+  margin-bottom: -10px;
+}
+.text-alt {
+  font-size: 31px;
+  font-family: "segoe_ui_regular";
+  margin-bottom: 0px;
+}
+.carousel-content {
+  margin-right: 25px;
+}
+.btn.btn-xl {
+  font-size: 24px;
+  padding: 15px 30px;
+}
+.banner-holder {
+  text-align: center;
+}
+.banner-holder img {
+  width: 100%;
+  height: auto;
+  margin: 0 auto;
+}
+.carousel-indicators {
+  display: none;
+}
+.carousel-control.right {
+  right: -35px;
+}
+.carousel-control.left {
+  left: -35px;
+}
+.searchCalenderArea{
+  position: relative;
+}
+.searchCalenderArea .dropdown-menu{
+ margin-top:37px;
+  
+}
+.searchCalenderArea .dropdown-menu li:last-child{
+  padding: 10px 9px 8px !important;
+  width: 100%;
+}
+.iconContainerButton{
+  height: 41px;
+}

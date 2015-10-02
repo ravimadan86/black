@@ -1,0 +1,109 @@
+define(['angular'], function (angular) {
+ 'use strict';
+ return ['$http','Constants',function($http,Constants){
+ 	
+ 	var jsonConfig = { 
+        headers:{
+                    'Content-Type':'application/json'
+                }
+    };
+
+    //Get all history of a rate card or channel lineup
+    this.getHistory = function(payLoadData){
+        var searchParam = "";
+        if(payLoadData.status)
+            searchParam+='&status='+payLoadData.status;
+        if(payLoadData.todate)
+            searchParam+='&todate='+payLoadData.todate;
+        if(payLoadData.fromdate)
+            searchParam+='&fromdate='+payLoadData.fromdate;
+        if(payLoadData.effectiveDate)
+            searchParam+='&effectiveDate='+payLoadData.effectiveDate;
+
+    	return $http.get(Constants.baseUrl+'/home/action/history?welcomekitId='+payLoadData.welcomekitId+'&page='+payLoadData.page+'&pageSize='+payLoadData.pageSize+'&sort=id,desc'+searchParam);
+    };
+
+    // get all welcomekit list that can be ordered
+    this.getWelcomekitOrderDetails = function(payLoadData){
+        return $http.get(Constants.baseUrl+'/order/action/list?welcomekitCategoryId=' + payLoadData.welcomekitCategoryId+'&page='+payLoadData.page+'&pageSize=' + payLoadData.pageSize);
+    };
+
+    // get all suppliers list
+    this.getWelcomekitSuppliers = function(){
+        return $http.get(Constants.baseUrl+'/order/action/list/suppliers');
+    };
+
+    // set all orders details with suppliers list
+    this.setOrderDetails = function(payLoadData){
+        return $http.post(Constants.baseUrl+'/order/action/place/order',payLoadData,jsonConfig);
+    };
+
+    // get order history details
+    this.getOrderHistoryDetails = function(payLoadData){
+        var searchParam = "";
+        if(payLoadData.orderNumber)
+            searchParam+='&orderNumber='+payLoadData.orderNumber;
+        if(payLoadData.orderDate)
+            searchParam+='&orderDate='+payLoadData.orderDate;
+        if(payLoadData.orderTypeId)
+            searchParam+='&orderTypeId='+payLoadData.orderTypeId;
+        if(payLoadData.productType)
+            searchParam+='&productType='+payLoadData.productType;
+        if(payLoadData.status)
+            searchParam+='&status='+payLoadData.status;
+        if(payLoadData.supplier)
+            searchParam+='&supplier='+payLoadData.supplier;
+        
+        return $http.get(Constants.baseUrl+'/order/action/orderhistory?page=' + payLoadData.page + '&pageSize='+ payLoadData.pageSize + '&sort=createdDate,desc'+searchParam);
+    };
+
+    // get order receipt details
+    this.getOrderReceiptDetails = function(payLoadData){
+        return $http.get(Constants.baseUrl+'/order/action/orderdetail?orderNo=' + payLoadData);
+    };
+
+    // get latest activities details
+    this.getLatestActivitiesDetails = function(payLoadData){
+        /*var searchParam = "";
+        if(payLoadData.name)
+            searchParam+='&name='+payLoadData.name;
+        if(payLoadData.regionName)
+            searchParam+='&regionName='+payLoadData.regionName;
+        if(payLoadData.versionCodeSiteId)
+            searchParam+='&versionCodeSiteId='+payLoadData.versionCodeSiteId;
+        if(payLoadData.statusId)
+            searchParam+='&statusId='+payLoadData.statusId;
+        if(payLoadData.effectiveDate)
+            searchParam+='&effectiveDate='+payLoadData.effectiveDate;
+        if(payLoadData.modifiedDate)
+            searchParam+='&modifiedDate='+payLoadData.modifiedDate;
+        if(payLoadData.type)
+            searchParam+='&type='+payLoadData.type;
+
+        return $http.get(Constants.baseUrl+'/home/action/myactivities/list?page=' + payLoadData.page + '&pageSize=' + payLoadData.pageSize + '&sort=createDate,desc'+searchParam);*/
+        return $http.post(Constants.baseUrl+'/inprocess/action/myactivities/list',payLoadData,jsonConfig);
+
+    };    
+
+    // get latest orders details
+    this.getLatestOrdersDetails = function(payLoadData){
+
+        return $http.get(Constants.baseUrl+'/order/action/latest?page=' + payLoadData.page + '&pageSize=' + payLoadData.pageSize + '&sort=createdDate,desc');
+    };
+
+    // get latest orders details
+    this.getAllAppprovedTacticDetails = function(payLoadData){
+        return $http.post(Constants.baseUrl+'/approved/action/list',payLoadData,jsonConfig);
+    };
+
+    // send high res proof tactics to inprogress
+    this.moveTacticsToInprogress = function(payLoadData){
+       return $http.post(Constants.baseUrl+'/approved/action/move/toinprocess',payLoadData,jsonConfig);
+    };
+
+    // get count of all in progress tactics
+    this.getInprogressCount = function(payLoadData){
+       return $http.get(Constants.baseUrl+'/inprocess/action/count/inprogress');
+    };
+ }];
+});

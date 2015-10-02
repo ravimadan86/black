@@ -1,0 +1,77 @@
+define(['angular'], function (angular) {
+	'use strict';
+	return ['$http','Constants',function($http,Constants){
+
+		var jsonConfig = { 
+			headers:{
+				'Content-Type':'application/json'
+			}
+		};
+this.getUsers = function(payLoadData){
+      return $http.get(Constants.baseUrl + '/admin/action/users/list' + '?page=' + payLoadData.page + '&pageSize=' + payLoadData.pageSize + '&sort='+ payLoadData.sort + '&name=' +payLoadData.name + '&email=' + payLoadData.emailId + '&status=' + payLoadData.statusId + '&roles=' + payLoadData.roleId);
+       };
+
+      //Get user details
+      this.getUserDetails = function(emailId){
+      return $http.get(Constants.baseUrl + '/admin/action/user/request/details' + '?emailId=' + emailId);
+       };
+
+      this.changeUserStatusToActive = function(usersEmailIds){
+      return $http.post(Constants.baseUrl + '/admin/action/user/change/status/active' + '?emailIds=' + usersEmailIds);
+       };
+
+      this.changeUserStatusToInactive = function(usersEmailIds){
+      return $http.post(Constants.baseUrl + '/admin/action/user/change/status/inactive' + '?emailIds=' + usersEmailIds);
+       };
+
+      this.save = function(payLoadData){
+      return $http.post(Constants.baseUrl + '/admin/action/edit/user',payLoadData,jsonConfig);
+       };
+
+      this.createUser = function(payLoadData){
+      return $http.post(Constants.baseUrl + '/admin/action/create/user',payLoadData,jsonConfig);
+       };
+      
+      this.getBundles = function(payLoadData)
+      {
+        return $http.get(Constants.baseUrl + '/admin/prod/action/bundle/upload/list' + '?page=' + payLoadData.page + '&pageSize=' + payLoadData.pageSize + '&sort=' + payLoadData.sort + '&email=' + payLoadData.email + '&fileName='+ payLoadData.filename + '&size=' + payLoadData.size + '&scheduleDate=' + payLoadData.scheduleDate + '&scheduleTypes=' + payLoadData.scheduleType + '&status=' + payLoadData.status + '&ftp=' + payLoadData.ftpcred);
+      };
+      
+      this.getSchedulerStatus = function()
+      {
+        return $http.get(Constants.baseUrl + '/admin/prod/scheduler/status');
+      };
+
+      this.getSchedulerDetails = function()
+      {
+        return $http.get(Constants.baseUrl + '/admin/prod/scheduler/schedule');
+      };
+
+      this.startScheduler = function()
+      {
+        return $http.get(Constants.baseUrl + '/admin/prod/scheduler/start');
+      };
+
+      this.stopScheduler = function()
+      {
+        return $http.get(Constants.baseUrl + '/admin/prod/scheduler/stop');
+      };
+
+      this.saveSchedule = function(payLoadData)
+      {
+        return $http.post(Constants.baseUrl + '/admin/prod/scheduler/edit',payLoadData,jsonConfig);
+      };
+
+      // Async manual bundle call
+      // this.createBundle = function()
+      // {
+      //   return $http.post(Constants.baseUrl + '/admin/prod/bundle');
+      // };
+
+      this.manualBundle = function()
+      {
+        return $http.post(Constants.baseUrl + '/admin/prod/manual/bundle');
+      };
+   		
+	}];
+});

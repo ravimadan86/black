@@ -1,0 +1,117 @@
+'use strict';
+
+require.config({
+	paths: {
+		angular: '../bower_components/angular/angular',
+		angularRoute: '../bower_components/angular-route/angular-route',
+		angularMocks: '../bower_components/angular-mocks/angular-mocks',
+		text: '../bower_components/requirejs-text/text',
+		angularAMD: '../bower_components/angularAMD/angularAMD',
+		routeHelper: 'common/routeHelper',
+		underscore: '../bower_components/underscore/underscore',
+		jquery:'../bower_components/jquery/dist/jquery',
+		UIBootstrap:'vendor/ui-bootstrap-tpls',
+		bootstrapHoverDropdown: 'vendor/bootstrap-hover-dropdown',
+		angularMd5: '../bower_components/angular-md5/angular-md5',
+		store: '../bower_components/store2/src/store2',
+		angularSanitize: '../bower_components/angular-sanitize/angular-sanitize',
+		uiutils: '../bower_components/angular-ui-utils/ui-utils',
+		angularMultiSelect: 'vendor/angularjs-dropdown-multiselect',
+		interceptor: 'interceptor',
+		bootstrap:'vendor/bootstrap',
+		select2:'vendor/select2',
+		bootstrapTokenfield:'vendor/bootstrap-tokenfield',
+		jqueryDatetimepicker:'vendor/jquery-datetimepicker',
+		jqueryClassyLoader:'vendor/jquery-classyloader',
+		jqueryDotDot:'vendor/jquery-dotdotdot',
+		'jquery.ui.widget':'vendor/jquery-ui',
+		angularUISelect: '../bower_components/angular-ui-select/dist/select',			//Ref : https://github.com/angular-ui/ui-select
+		ngTagInput: '../bower_components/ng-tags-input/ng-tags-input',					//Ref : http://mbenford.github.io/ngTagsInput/,
+		fileUpload: 'vendor/uploader',
+		'load-image': 'vendor/load-image',
+		blueImpJqueryGallery: 'vendor/jquery.blueimp-gallery',
+		'canvas-to-blob': 'vendor/canvas-to-blob',
+		gallery: 'vendor/blueimp-gallery',
+		angularfileUpload : 'vendor/angular-file-upload',		//Ref : https://github.com/nervgh/angular-file-upload
+		angularTimestampFilter : '../bower_components/angular-srph-timestamp-filter/src/filter'		//https://github.com/srph/angular-timestamp-filter
+	},
+	waitSeconds:600,
+	shim: {
+		'angular' : {'exports' : 'angular'},
+		'angularRoute': ['angular'],
+		'angularMocks': {
+			deps:['angular'],
+			'exports':'angular.mock'
+		},
+		'angularAMD' : {
+			deps : ['angular']
+		},
+		'UIBootstrap' : {
+			deps : ['angular']
+		},
+		'bootstrapHoverDropdown':{
+			deps:['jquery']
+		},
+		'angularMd5': {
+			deps:['angular']
+		},
+		'store': {
+			deps: ['jquery']
+		},
+		'angularSanitize': {
+			deps : ['angular']
+		},
+		'uiutils': {
+			deps:['angular']
+		},
+		'angularMultiSelect': {
+			deps: ['angular']
+		},
+		'bootstrap': {
+			deps: ['jquery']
+		},
+		'select2': {
+			deps: ['jquery']
+		},
+		'bootstrapTokenfield': {
+			deps: ['jquery']
+		},
+		'jqueryDatetimepicker': {
+			deps: ['jquery']
+		},
+		'jqueryClassyLoader': {
+			deps: ['jquery']
+		},
+		'jqueryDotDot': {
+			deps: ['jquery']
+		},
+		'jquery.ui.widget': {
+			deps: ['jquery']
+		},
+		'angularUISelect': {
+			deps: ['angular']
+		},
+		'ngTagInput' : {
+			deps: ['angular']
+		},
+		'gallery': {
+			deps:['jquery']
+		},
+		'blueImpJqueryGallery' : {
+			deps: ['jquery','gallery']
+		},
+		'fileUpload' : {
+			deps: ['angular','jquery','load-image','canvas-to-blob','blueImpJqueryGallery']
+		},
+		'angularfileUpload' : {
+			deps: ['angular']
+		},
+		'angularTimestampFilter' : {
+			deps : ['angular']
+		}
+	},
+	priority: [
+		"angular"
+	],
+	deps: ['app']
+});

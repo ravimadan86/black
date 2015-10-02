@@ -1,0 +1,151 @@
+<!-- Application header -->
+	<div app-header></div>
+
+<!-- container -->
+<div class="container for-header-footer">
+	<div class="posRelative">
+		<ol class="breadcrumb">
+		  <li><a href="#/raw_home">Home</a></li>
+		  <li><a href="#/raw_tacticMGT">Tactics</a></li>
+		  <li class="active">Q2 2014 TV Campaign</li>
+		</ol>
+	</div>
+	<div class="row">
+		<div class="col-sm-12">
+			<h2>Tactic Info</h2>
+	        <div class="white-box white-box-bordered">
+	        	<div class="row">
+	        		<div class="col-sm-6">
+	        			<div class="tacticsInfoContent">
+			              <table>
+			                <tbody>
+			                  <tr>
+			                    <td><span class="tableTitle">Tactic Name</span></td>
+			                    <td><span class="tableDesc">Q2 2014 TV Campaign</span></td>
+			                  </tr>
+			                  <tr>
+			                    <td><span class="tableTitle">Description</span></td>
+			                    <td><span class="tableDesc">Brief info about Tactic</span></td>
+			                  </tr>
+			                  <tr>
+			                    <td><span class="tableTitle">Type</span></td>
+			                    <td><span class="tableDesc">Tactic Type</span></td>
+			                  </tr>
+			                  <tr>
+			                    <td><span class="tableTitle">Category</span></td>
+			                    <td><span class="tableDesc">Category 1</span></td>
+			                  </tr>
+			                  <tr>
+			                    <td><span class="tableTitle">Created Date</span></td>
+			                    <td><span class="tableDesc">12 / 11 / 2015</span></td>
+			                  </tr>
+			                  <tr>
+			                    <td><span class="tableTitle">Archive Date</span></td>
+			                    <td><span class="tableDesc">15 / 12 / 2015</span></td>
+			                  </tr>
+			                  <tr>
+			                    <td><span class="tableTitle">Order Lead Time</span></td>
+			                    <td><span class="tableDesc">10 : 35 : 00 PM</span></td>
+			                  </tr>
+			                </tbody>
+			              </table>
+			            </div>
+	        		</div>
+	        		<div class="col-sm-6">
+	        			<div class="item-preview-tactic-info">
+	        				<a href="">
+								<div class="makeCenterOuter">
+									<div class="makeCenterInner">
+										<img src="img/thumbnail.png" class="img-responsive">
+									</div>
+								</div>
+							</a>
+						</div>
+	        		</div>
+	        	</div>
+	        	<br/>
+	        	<div class="row">
+	        		<div class="col-sm-12">
+	        			<div class="white-box white-box-bordered marginBottomNull minHeightNull">
+	        				<h4 class="marginBottomNull">
+	        					Associated Labels
+	        					<i class="fa fa-minus pull-right"></i>
+	        				</h4>
+	        				<div class="associatedLabels">
+	        					<button class="btn btn-link label">label1</button>, 
+								<button class="btn btn-link label">label2</button>, 
+								<button class="btn btn-link label">label3</button>, 
+								<button class="btn btn-link label">label4</button>, 
+								<button class="btn btn-link label">label5</button>, 
+								<button class="btn btn-link label">label6</button>, 
+								<button class="btn btn-link label">label7</button>, 
+								<button class="btn btn-link label">label8</button>, 
+								<button class="btn btn-link label">label9</button>, 
+								<button class="btn btn-link label">label10</button>
+	        				</div>
+	        			</div>
+	        		</div>
+	        	</div>
+				
+	        </div>
+	        <h2>Customizations</h2>
+	        <div class="white-box white-box-bordered">
+	        	<ul class="tacticsCustomFields">
+	     			<li>
+	     				<div class="fieldName">Size</div>
+	     				<div class="fieldValue"><input type="text" class="form-control" placeholder="8.375*10.75"></div>
+	     			</li>
+	     			<li>
+	     				<div class="fieldName">Product</div>
+	     				<div class="fieldValue"><input type="text" class="form-control" placeholder="Internet & Voice"></div>
+	     			</li>
+	     			<li>
+	     				<div class="fieldName">Market</div>
+	     				<div class="fieldValue">
+     						<label class="radioLable"><input type="radio" name="cl"> Cleveland</label>
+     						<label class="radioLable"><input type="radio" name="cl"> Cleveland</label>
+	     				</div>
+	     			</li>
+	     			<li>
+	     				<div class="fieldName">Phone</div>
+	     				<div class="fieldValue"><input type="number" class="form-control" placeholder="111-111-1111"></div>
+	     			</li>
+	     			<li>
+	     				<div class="fieldName">Sweetener 3</div>
+	     				<div class="fieldValue">
+	     					<div class="custom-select">
+	     						<select>
+	     							<option>None</option>
+	     							<option selected>SW003</option>
+	     							<option>SW002</option>
+	     						</select>
+	     					</div>
+	     				</div>
+	     			</li>
+	     			<li>
+	     				<div class="fieldName">Tactics Title</div>
+	     				<div class="fieldValue"><input type="text" class="form-control" placeholder="14Q2_BUS_FSI_8x10"></div>
+	     			</li>
+	     			<li>
+	     				<div class="fieldName">Basic Tactic ID</div>
+	     				<div class="fieldValue"><input type="text" class="form-control" placeholder="FSI102339"></div>
+	     			</li>
+	     			<li>
+	     				<div class="fieldName">Version ID</div>
+	     				<div class="fieldValue"><input type="text" class="form-control" placeholder="FSI102339-0000"></div>
+	     			</li>
+	            </ul>
+	            <div class="clearfix"></div>
+	        </div>
+	        <div class="clearfix"></div>
+	        <div class="btn-holder pull-right ">
+				<button type="submit" class="btn btn-primary btn-lg">Generate Proof</button>
+            </div>
+		</div>
+	</div>
+
+
+</div><!-- container -->
+
+<!-- Application footer -->
+	<div app-footer></div>

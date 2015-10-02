@@ -1,0 +1,13 @@
+define(['angular' ,'text!common/header/headerView.html', 'common/header/headerCtrl'], function (angular, headerTemplate, headerCtrl) {
+  'use strict';
+
+    /* Header Directive */
+return  function() {
+  return{
+            restrict: 'A',
+            // scope:{},
+            template: headerTemplate,
+            controller: headerCtrl
+        };
+      };
+});

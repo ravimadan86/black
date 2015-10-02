@@ -1,0 +1,44 @@
+<!-- Application header -->
+	<div app-header></div>
+
+
+<!-- container -->
+<div class="container for-header-footer">
+	<!-- <div class="posRelative">
+		<ol class="breadcrumb">
+		  <li><a href="#/raw_home">Home</a></li>
+		  <li class="active">New Project</li>
+		</ol>
+	</div> -->
+	<div class="row">
+		<div class="col-sm-12">
+			<h2>Admin</h2>
+	        <div class="planeTabPanel outset" role="tabpanel">
+				<!-- Nav tabs -->
+				<ul class="nav nav-tabs" role="tablist">
+				    <li role="presentation" class="active"><a showtab="" href="#users" aria-controls="users" role="tab" data-toggle="tab">Users</a></li>
+				    <li role="presentation"><a showtab="" href="#projects" aria-controls="projects" role="tab" data-toggle="tab">Projects</a></li>
+				</ul>
+
+				<!-- Tab panes -->
+				<div class="tab-content">
+				    <div role="tabpanel" class="tab-pane active" id="users">
+				    	<div class="padding20">
+				    		This page is under construction
+				    	</div>
+				    </div>
+				    <div role="tabpanel" class="tab-pane" id="projects">
+				    	<div admin-project></div>
+				    </div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+</div><!-- container -->
+
+<!-- Application footer -->
+	<div app-footer></div>
+
+
+

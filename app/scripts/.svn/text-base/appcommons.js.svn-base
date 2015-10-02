@@ -1,0 +1,32 @@
+define(['angular', 
+    'angularAMD',
+    'angularRoute',
+    'angularMocks',
+    'bootstrapHoverDropdown',
+    'store',
+    'underscore',
+    'common/directives',
+    'common/filters',
+    'common/services',
+    'UIBootstrap',
+    'angularMd5',
+    'angularSanitize',
+    'uiutils',
+    'angularMultiSelect',
+    'angularUISelect',
+    'ngTagInput',
+    'fileUpload',
+    'angularfileUpload',
+    'angularTimestampFilter',
+    'bootstrap',
+    'select2',
+    'bootstrapTokenfield',
+    'jqueryDatetimepicker',
+    'jqueryClassyLoader',
+    'jqueryDotDot',
+    'jquery.ui.widget'
+    ], 
+    function (angular, angularAMD, angularRoute, angularMocks) {
+        'use strict';
+        return angularAMD;
+});

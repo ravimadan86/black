@@ -1,0 +1,63 @@
+define(['angular'], function (angular) {
+ 'use strict';
+ return ['$http','Constants',function($http,Constants){
+ 	
+ 	var jsonConfig = { 
+        headers:{
+                    'Content-Type':'application/json'
+                }
+    };
+
+     //Get latest rate cards
+    this.getLatestRateCards = function(payLoadData){
+        var searchParam = "";
+        if(payLoadData.name)
+            searchParam+='&name='+payLoadData.name;
+        if(payLoadData.regionName)
+            searchParam+='&regionName='+payLoadData.regionName;
+        if(payLoadData.versionCode)
+            searchParam+='&versionCode='+payLoadData.versionCode;
+        if(payLoadData.statusId)
+            searchParam+='&statusId='+payLoadData.statusId;
+        if(payLoadData.effectiveDate)
+            searchParam+='&effectiveDate='+payLoadData.effectiveDate;
+
+        return $http.get(Constants.baseUrl+'/home/action/ratecard/list?page='+payLoadData.page+'&pageSize='+payLoadData.pageSize+'&sort=createDate,desc'+searchParam);
+    };
+
+    //get all regions with siteid
+    this.getRegionsWithSiteid = function(){
+        return $http.get(Constants.baseUrl+'/ratecard/rc/region');
+    };
+
+    // get all sections to create new rate card
+    this.getCreateRateCardDetails = function(){
+    	return $http.get(Constants.baseUrl+'/ratecard/action/header/packages/details');
+    };
+
+    // save new rate card details
+    this.saveNewRateCardDetails = function(payLoadData){
+        return $http.post(Constants.baseUrl+'/ratecard/action/rc/save',payLoadData,jsonConfig);
+    };
+
+    //Get data to edit rate card
+    this.getEditRCDetails = function(payLoadData){
+        return $http.get(Constants.baseUrl+'/ratecard/action/rc/details/'+payLoadData);
+    };    
+    
+    //Save edited edit rate card details
+    this.saveEditedRCDetails = function(payLoadData){
+        return $http.post(Constants.baseUrl+'/ratecard/action/rc/update',payLoadData,jsonConfig);
+    };
+
+    //Generate low res proof
+    this.generateLowResProof = function(payLoadData){
+        return $http.post(Constants.baseUrl+'/ratecard/action/rc/generatelowres/'+payLoadData,jsonConfig);
+    };
+
+    //Generate high res proof
+    this.generateHighResProof = function(payLoadData){
+        return $http.post(Constants.baseUrl+'/ratecard/action/rc/generatehighres/'+payLoadData,jsonConfig);
+    };
+ }];
+});
